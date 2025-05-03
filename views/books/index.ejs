@@ -1,0 +1,74 @@
+
+
+<div class="container my-5">
+  <h1 class="mb-4"><i class="fas fa-book me-2"></i>Catalogue de livres</h1>
+  
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <form action="/books" method="GET">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Rechercher un livre par titre, auteur ou ISBN..."
+            name="search"
+            value="<%= search %>"
+          >
+          <select name="category" class="form-select" style="max-width: 180px;">
+            <option value="Toutes" <%= category === 'Toutes' ? 'selected' : '' %>>Toutes les catégories</option>
+            <% categories.forEach(function(cat) { %>
+              <option value="<%= cat %>" <%= category === cat ? 'selected' : '' %>><%= cat %></option>
+            <% }); %>
+          </select>
+          <button class="btn btn-primary" type="submit">
+            <i class="fas fa-search me-1"></i>Rechercher
+          </button>
+        </div>
+      </form>
+    </div>
+    <% if(currentUser && currentUser.role === 'admin') { %>
+      <div class="col-md-4 text-end">
+        <a href="/books/add" class="btn btn-success">
+          <i class="fas fa-plus me-1"></i>Ajouter un livre
+        </a>
+      </div>
+    <% } %>
+  </div>
+  
+  <% if(books.length === 0) { %>
+    <div class="alert alert-info">
+      <p class="mb-0">Aucun livre trouvé. Veuillez modifier vos critères de recherche.</p>
+    </div>
+  <% } else { %>
+    <div class="row">
+      <% books.forEach(function(book) { %>
+        <div class="col-md-4 col-lg-3 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="<%= book.image %>" class="card-img-top" alt="<%= book.titre %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= book.titre %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= book.auteur %></h6>
+              <p class="card-text">
+                <span class="badge bg-info text-dark"><%= book.categorie %></span>
+              </p>
+              <p class="card-text">
+                <% if(book.quantiteDisponible > 0) { %>
+                  <span class="badge bg-success">Disponible</span>
+                <% } else { %>
+                  <span class="badge bg-danger">Indisponible</span>
+                <% } %>
+              </p>
+            </div>
+            <div class="card-footer bg-white border-top-0">
+              <div class="d-grid">
+                <a href="/books/<%= book._id %>" class="btn btn-outline-primary">
+                  <i class="fas fa-info-circle me-1"></i>Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  <% } %>
+</div>

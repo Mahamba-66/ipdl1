@@ -1,0 +1,78 @@
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white">
+          <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Inscription</h3>
+        </div>
+        <div class="card-body">
+          <form action="/auth/register" method="POST">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nom"
+                  name="nom"
+                  value="<%= typeof user !== 'undefined' ? user.nom : '' %>"
+                  required
+                >
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="prenom"
+                  name="prenom"
+                  value="<%= typeof user !== 'undefined' ? user.prenom : '' %>"
+                  required
+                >
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                value="<%= typeof user !== 'undefined' ? user.email : '' %>"
+                required
+              >
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Mot de passe</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required
+              >
+              <div class="form-text">Le mot de passe doit contenir au moins 6 caractères.</div>
+            </div>
+            <div class="mb-3">
+              <label for="password2" class="form-label">Confirmer le mot de passe</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password2"
+                name="password2"
+                required
+              >
+            </div>
+            <button type="submit" class="btn btn-success w-100">
+              <i class="fas fa-user-plus me-2"></i>S'inscrire
+            </button>
+          </form>
+          <div class="text-center mt-3">
+            <p>Vous avez déjà un compte ? <a href="/auth/login">Se connecter</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

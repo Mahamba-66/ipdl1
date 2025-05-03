@@ -1,0 +1,125 @@
+
+<div class="container my-5">
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/books">Catalogue</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Ajouter un livre</li>
+    </ol>
+  </nav>
+  
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+      <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Ajouter un nouveau livre</h3>
+    </div>
+    <div class="card-body">
+      <form action="/books/add" method="POST">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="titre" class="form-label">Titre</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="titre" 
+              name="titre" 
+              value="<%= typeof book !== 'undefined' ? book.titre : '' %>"
+              required
+            >
+          </div>
+          <div class="col-md-6">
+            <label for="auteur" class="form-label">Auteur</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="auteur" 
+              name="auteur" 
+              value="<%= typeof book !== 'undefined' ? book.auteur : '' %>"
+              required
+            >
+          </div>
+        </div>
+        
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="categorie" class="form-label">Catégorie</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="categorie" 
+              name="categorie" 
+              value="<%= typeof book !== 'undefined' ? book.categorie : '' %>"
+              required
+            >
+          </div>
+          <div class="col-md-4">
+            <label for="isbn" class="form-label">ISBN</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="isbn" 
+              name="isbn" 
+              value="<%= typeof book !== 'undefined' ? book.isbn : '' %>"
+              required
+            >
+          </div>
+          <div class="col-md-4">
+            <label for="anneePublication" class="form-label">Année de publication</label>
+            <input 
+              type="number" 
+              class="form-control" 
+              id="anneePublication" 
+              name="anneePublication" 
+              value="<%= typeof book !== 'undefined' ? book.anneePublication : '' %>"
+              required
+            >
+          </div>
+        </div>
+        
+        <div class="row mb-3">
+          <div class="col-md-8">
+            <label for="editeur" class="form-label">Éditeur</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="editeur" 
+              name="editeur" 
+              value="<%= typeof book !== 'undefined' ? book.editeur : '' %>"
+              required
+            >
+          </div>
+          <div class="col-md-4">
+            <label for="quantiteTotale" class="form-label">Quantité</label>
+            <input 
+              type="number" 
+              class="form-control" 
+              id="quantiteTotale" 
+              name="quantiteTotale" 
+              value="<%= typeof book !== 'undefined' ? book.quantiteTotale : '1' %>"
+              min="1"
+              required
+            >
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea 
+            class="form-control" 
+            id="description" 
+            name="description" 
+            rows="5" 
+            required
+          ><%= typeof book !== 'undefined' ? book.description : '' %></textarea>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="/books" class="btn btn-secondary">
+            <i class="fas fa-times me-1"></i>Annuler
+          </a>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-plus-circle me-1"></i>Ajouter le livre
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

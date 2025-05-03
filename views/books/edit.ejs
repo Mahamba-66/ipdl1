@@ -1,0 +1,133 @@
+
+<div class="container my-5">
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/books">Catalogue</a></li>
+      <li class="breadcrumb-item"><a href="/books/<%= book._id %>"><%= book.titre %></a></li>
+      <li class="breadcrumb-item active" aria-current="page">Modifier</li>
+    </ol>
+  </nav>
+  
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Modifier le livre</h3>
+    </div>
+    <div class="card-body">
+      <form action="/books/edit/<%= book._id %>?_method=PUT" method="POST">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="titre" class="form-label">Titre</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="titre" 
+              name="titre" 
+              value="<%= book.titre %>"
+              required
+            >
+          </div>
+          <div class="col-md-6">
+            <label for="auteur" class="form-label">Auteur</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="auteur" 
+              name="auteur" 
+              value="<%= book.auteur %>"
+              required
+            >
+          </div>
+        </div>
+        
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="categorie" class="form-label">Catégorie</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="categorie" 
+              name="categorie" 
+              value="<%= book.categorie %>"
+              required
+            >
+          </div>
+          <div class="col-md-4">
+            <label for="isbn" class="form-label">ISBN</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="isbn" 
+              name="isbn" 
+              value="<%= book.isbn %>"
+              required
+            >
+          </div>
+          <div class="col-md-4">
+            <label for="anneePublication" class="form-label">Année de publication</label>
+            <input 
+              type="number" 
+              class="form-control" 
+              id="anneePublication" 
+              name="anneePublication" 
+              value="<%= book.anneePublication %>"
+              required
+            >
+          </div>
+        </div>
+        
+        <div class="row mb-3">
+          <div class="col-md-8">
+            <label for="editeur" class="form-label">Éditeur</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="editeur" 
+              name="editeur" 
+              value="<%= book.editeur %>"
+              required
+            >
+          </div>
+          <div class="col-md-4">
+            <label for="quantiteTotale" class="form-label">Quantité</label>
+            <div class="input-group">
+              <input 
+                type="number" 
+                class="form-control" 
+                id="quantiteTotale" 
+                name="quantiteTotale" 
+                value="<%= book.quantiteTotale %>"
+                min="<%= book.quantiteTotale - book.quantiteDisponible %>"
+                required
+              >
+              <span class="input-group-text"><%= book.quantiteDisponible %> disponible(s)</span>
+            </div>
+            <div class="form-text">
+              La quantité ne peut pas être inférieure au nombre de livres actuellement empruntés 
+              (<%= book.quantiteTotale - book.quantiteDisponible %>).
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea 
+            class="form-control" 
+            id="description" 
+            name="description" 
+            rows="5" 
+            required
+          ><%= book.description %></textarea>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="/books/<%= book._id %>" class="btn btn-secondary">
+            <i class="fas fa-times me-1"></i>Annuler
+          </a>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save me-1"></i>Enregistrer les modifications
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+
+<div class="container my-5">
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/profile">Mon profil</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Modifier le profil</li>
+    </ol>
+  </nav>
+  
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0"><i class="fas fa-user-edit me-2"></i>Modifier mon profil</h3>
+    </div>
+    <div class="card-body">
+      <form action="/profile/edit?_method=PUT" method="POST">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="nom" class="form-label">Nom</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="nom" 
+              name="nom" 
+              value="<%= user.nom %>"
+              required
+            >
+          </div>
+          <div class="col-md-6">
+            <label for="prenom" class="form-label">Prénom</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="prenom" 
+              name="prenom" 
+              value="<%= user.prenom %>"
+              required
+            >
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            name="email" 
+            value="<%= user.email %>"
+            required
+          >
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="/profile" class="btn btn-secondary">
+            <i class="fas fa-times me-1"></i>Annuler
+          </a>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save me-1"></i>Enregistrer les modifications
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

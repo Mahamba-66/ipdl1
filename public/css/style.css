@@ -1,0 +1,204 @@
+/* Variables */
+:root {
+  --primary: #1A73E8;
+  --primary-dark: #0D47A1;
+  --secondary: #34A853;
+  --secondary-dark: #2E7D32;
+  --accent: #FBBC04;
+  --danger: #EA4335;
+  --light: #F8F9FA;
+  --dark: #202124;
+  --gray: #5F6368;
+  --gray-light: #dadce0;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--dark);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar-dark {
+  background-color: var(--primary) !important;
+}
+
+.navbar-brand i {
+  color: var(--accent);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--light) !important;
+  border-top: 1px solid var(--gray-light);
+}
+
+/* Cards */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-success {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.btn-success:hover {
+  background-color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Forms */
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.25rem rgba(26, 115, 232, 0.25);
+}
+
+/* Badges */
+.badge {
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+  border-radius: 4px;
+}
+
+/* Progress bars */
+.progress {
+  height: 0.8rem;
+  border-radius: 4px;
+}
+
+/* Alerts */
+.alert {
+  border-radius: 4px;
+}
+
+/* Animation for flash messages */
+.alert-dismissible {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Book card hover effect */
+.card:hover .card-img-top {
+  opacity: 0.9;
+}
+
+/* Admin dashboard cards */
+.stat-card {
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stat-card i {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+.stat-card h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-img-top {
+    height: 150px;
+  }
+  
+  .stat-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Theme Colors */
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-success {
+  background-color: var(--secondary) !important;
+}
+
+.bg-danger {
+  background-color: var(--danger) !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.text-success {
+  color: var(--secondary) !important;
+}
+
+.text-danger {
+  color: var(--danger) !important;
+}
